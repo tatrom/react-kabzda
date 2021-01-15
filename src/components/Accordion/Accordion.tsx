@@ -1,18 +1,27 @@
 import React, {useState} from 'react';
 
-type AccordionPropsType = {
+export type ItemType = {
+    title: string
+    value: number
+}
+export type AccordionPropsType = {
     titleValue: string;
     collapsed: boolean
+    onChange: () => void
+    /**
+     * Elements that are showed when is opened. Each item should be ItemType
+     */
+    items: ItemType[]
+    /**
+     * optional color of header text
+     */
+    color?: string
 }
 
-function Accordion(props: AccordionPropsType) {
-    let [collapsed, setCollapsed] = useState(props.collapsed)
+export function Accordion(props: AccordionPropsType) {
     return <div>
-        <AccordionTitle title={props.titleValue} onClick={() => {
-            setCollapsed(!collapsed)
-        }
-        }/>
-        {!collapsed && <AccordionBody/>}
+        <AccordionTitle title={props.titleValue} onClick={props.onChange} color={props.color}/>
+        {!props.collapsed && <AccordionBody items={props.items}/>}
     </div>
 }
 
@@ -20,24 +29,30 @@ type AccordionTitlePropsType = {
 
     title: string;
     onClick: () => void
+    color?: string
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     console.log("Accordion title rendering")
     return (
-        <h3 onClick={props.onClick}>--{props.title}--</h3>
+        <h3 style={{color: props.color ? props.color : 'black'}}
+            onClick={props.onClick}>--{props.title}--</h3>
     )
 }
 
-function AccordionBody() {
-    console.log("AccordionBody rendering")
+type AccordionBodyType = {
+    items: Array<ItemType>
+}
+
+function AccordionBody(props: AccordionBodyType) {
+
     return (
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            {props.items.map(item => {
+                return (
+                    <li>{item.title}</li>
+                )
+            })}
         </ul>
     )
 }
-
-export default Accordion;

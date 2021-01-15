@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 
-type OnOffType = {
+export type OnOffType = {
     on: boolean
     onChange: (on: boolean) => void
 }
 
-function OnOff(props: OnOffType) {
+export function OnOff(props: OnOffType) {
 
     const onStyle = {
         width: "30px",
@@ -44,6 +44,4 @@ function OnOff(props: OnOffType) {
         <div style={indicatorStyle} ></div>
     </div>
 }
-
-export default OnOff;
 
