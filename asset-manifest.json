@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-kabzda/static/css/main.ea1455b2.chunk.css",
-    "main.js": "/react-kabzda/static/js/main.d275141f.chunk.js",
-    "main.js.map": "/react-kabzda/static/js/main.d275141f.chunk.js.map",
+    "main.js": "/react-kabzda/static/js/main.dc31ff7e.chunk.js",
+    "main.js.map": "/react-kabzda/static/js/main.dc31ff7e.chunk.js.map",
     "runtime-main.js": "/react-kabzda/static/js/runtime-main.d0cbaf6f.js",
     "runtime-main.js.map": "/react-kabzda/static/js/runtime-main.d0cbaf6f.js.map",
     "static/js/2.6a44351b.chunk.js": "/react-kabzda/static/js/2.6a44351b.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d0cbaf6f.js",
     "static/js/2.6a44351b.chunk.js",
     "static/css/main.ea1455b2.chunk.css",
-    "static/js/main.d275141f.chunk.js"
+    "static/js/main.dc31ff7e.chunk.js"
   ]
 }
