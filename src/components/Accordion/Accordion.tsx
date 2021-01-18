@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 export type ItemType = {
     title: string
-    value: number
+    value: any
 }
 export type AccordionPropsType = {
     titleValue: string;
@@ -16,12 +16,14 @@ export type AccordionPropsType = {
      * optional color of header text
      */
     color?: string
+    onClick: (value: any) => void
+
 }
 
 export function Accordion(props: AccordionPropsType) {
     return <div>
         <AccordionTitle title={props.titleValue} onClick={props.onChange} color={props.color}/>
-        {!props.collapsed && <AccordionBody items={props.items}/>}
+        {!props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
     </div>
 }
 
@@ -42,15 +44,16 @@ function AccordionTitle(props: AccordionTitlePropsType) {
 
 type AccordionBodyType = {
     items: Array<ItemType>
+    onClick: (value: any) => void
 }
 
 function AccordionBody(props: AccordionBodyType) {
 
     return (
         <ul>
-            {props.items.map(item => {
+            {props.items.map((item, index) => {
                 return (
-                    <li>{item.title}</li>
+                    <li onClick={() => {props.onClick(index)}}    key={index}>{item.title}</li>
                 )
             })}
         </ul>
