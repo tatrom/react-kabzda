@@ -1,26 +1,37 @@
 import React, {useState} from 'react';
+// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
+import {Story} from '@storybook/react/types-6-0';
+import {action} from "@storybook/addon-actions";
+import {Select, SelectPropsType} from "./Select";
 
-type ItemType = {
-    title: string
-    value: any
+
+export default {
+    title: 'Select',
+    component: Select,
+}
+const callback = action('Rating is clicked')
+
+const Template: Story<SelectPropsType> = (args) => <Select {...args} />
+
+export const WithValue:Story<SelectPropsType> = (args) => {
+    const [value, setValue] = useState('2')
+    return <Select {...args} onChange={setValue} value={value}/>
+}
+WithValue.args = {
+    items: [
+        {value: "1", title: "Minsk"},
+        {value: "2", title: "Moscow"},
+        {value: "3", title: "Kiev"}
+    ],
 }
 
-export type SelectPropsType = {
-    value: any
-    onChange: (value: any) => void
-    items: ItemType[]
+export const WithoutValue = Template.bind({})
+WithoutValue.args = {
+    onChange: action("Value changed"),
+    items: [
+        {value: "1", title: "Minsk"},
+        {value: "2", title: "Moscow"},
+        {value: "3", title: "Kiev"}
+    ],
 }
 
-
-export function Select(props: SelectPropsType) {
-    const[collapsed, setCollapsed] = useState(true)
-    const onClickHandler = (e: string) => {
-        setCollapsed(!collapsed);
-        props.onChange(e);
-    }
-    return (
-        <div>
-            <h3 onClick={() => setCollapsed(false)}>{props.value}</h3>
-            { collapsed && props.items.map(i => <div onClick={() => onClickHandler(i.title)}>{i.title}</div>)}
-        </div>)
-}
