@@ -45,7 +45,7 @@ function App() {
         <div>
             {/*<OnOff on={switchOn} onChange={setSwitchOn} />*/}
             {/*<UncontrolledOnOff onChange={setSwitchOn} /> {switchOn.toString()}*/}
-            {/*<AccordionUncontrolled titleValue={"Menu"} />*/}
+            <AccordionUncontrolled titleValue={"Menu"} />
             {/*<RatingUncontrolled />*/}
             {/*<Accordion titleValue={"Menu"} collapsed={collapsed} onChange={ () => setCollapsed(!collapsed)} items={[]} onClick={(value:any) => console.log('Hellow')}/>*/}
             {/*<Accordion titleValue={"Users"} collapsed={true}/>*/}
