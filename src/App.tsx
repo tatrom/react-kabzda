@@ -33,43 +33,37 @@ function App() {
         }
     ]
     let [value, setValue] = useState<string>(selectItems[0].title)
-
     const changeValue = (title: string) => {
         debugger;
-        let newValue = selectItems.find( item => item.title === title && item.title)
+        let newValue = selectItems.find(item => item.title === title && item.title)
         debugger;
         if (newValue)
-        setValue(newValue.title)
+            setValue(newValue.title)
     }
+    const changeRatingValue = (value: RatingValueType) => {
+        setRatingValue(value)
+    }
+
+    const OnOffContainer = React.memo(OnOff);
+    const UncontrolledOnOffContainer = React.memo(UncontrolledOnOff);
+    const AccordionUncontrolledContainer = React.memo(AccordionUncontrolled);
+    const RatingUncontrolledContainer = React.memo(RatingUncontrolled);
+    const RatingContainer = React.memo(Rating);
+    const AccordionContainer = React.memo(Accordion);
     return (
         <div>
-            {/*<OnOff on={switchOn} onChange={setSwitchOn} />*/}
-            {/*<UncontrolledOnOff onChange={setSwitchOn} /> {switchOn.toString()}*/}
-            <AccordionUncontrolled titleValue={"Menu"} />
-            {/*<RatingUncontrolled />*/}
-            {/*<Accordion titleValue={"Menu"} collapsed={collapsed} onChange={ () => setCollapsed(!collapsed)} items={[]} onClick={(value:any) => console.log('Hellow')}/>*/}
-            {/*<Accordion titleValue={"Users"} collapsed={true}/>*/}
-            {/*<Rating value={0} />*/}
-            {/*<Rating value={1} />*/}
-            {/*<Rating value={ratingValue} onClick={setRatingValue} />*/}
-            {/*<Rating value={3} />*/}
-            {/*<Rating value={4} />*/}
-            {/*<Rating value={5} />*/}
+            <OnOffContainer on={switchOn} onChange={setSwitchOn}/>
+            <UncontrolledOnOffContainer onChange={setSwitchOn}/> {switchOn.toString()}
+            <AccordionUncontrolledContainer titleValue={"Menu"}/>
+            <RatingUncontrolledContainer onChange={() => setSwitchOn}/>
+            <AccordionContainer titleValue={"Menu"} collapsed={collapsed} onChange={() => setCollapsed(!collapsed)}
+                                items={[]} onClick={(value: any) => console.log('Hellow')}/>
+            <RatingContainer value={ratingValue} onClick={changeRatingValue}/>
+
             <Select value={value} onChange={changeValue} items={selectItems}/>
         </div>
     );
 }
-
-// type PageTitlePropsType = {
-//     title: string;
-// }
-//
-// function PageTitle(props: PageTitlePropsType) {
-//   console.log("PageTitle rendering");
-//   return (
-//       <h1>{props.title}</h1>
-//   )
-// }
 
 
 export default App;

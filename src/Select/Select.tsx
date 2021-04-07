@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import s from './Select.module.css'
 import {KeyboardEvent} from "react";
 
-type ItemType = {
+export type ItemType = {
     title: string
     value: any
 }
@@ -42,7 +42,7 @@ export function Select(props: SelectPropsType) {
                 }
             }
             if (!selectedItem)
-            props.onChange(props.items[0].value)
+                props.onChange(props.items[0].value)
 
         }
 
